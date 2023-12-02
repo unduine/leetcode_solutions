@@ -11,7 +11,6 @@ var exist = function(board, word) {
 
   const dfs = (r, c, i) => {
     const currPath = `${r},${c}`;
-    console.log(i == word.length)
     if (i == word.length) return true;
 
     if (

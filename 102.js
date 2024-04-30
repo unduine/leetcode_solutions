@@ -15,18 +15,19 @@ var levelOrder = function (root) {
     return [];
   }
   const res = [];
-  let q = [root];
+  let level = [];
+  let nextLevel = [root];
 
-  while (q.length) {
-    const newQ = [];
-    const level = [];
-    for (node of q) {
-      level.push(node.val);
-      if (node.left) newQ.push(node.left);
-      if (node.right) newQ.push(node.right);
+  while (nextLevel.length) {
+    level = nextLevel;
+    nextLevel = [];
+    res.push([]);
+
+    for (node of level) {
+      res.at(-1).push(node.val);
+      if (node.left) nextLevel.push(node.left);
+      if (node.right) nextLevel.push(node.right);
     }
-    q = newQ;
-    res.push(level);
   }
 
   return res;
